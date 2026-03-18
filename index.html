@@ -4,320 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sovereign Capital - Premium Personal Finance & Wealth Acceleration</title>
-    <meta name="description" content="Build unbreakable wealth in 90 days with debt destruction systems, AI-powered tools, and proven investment frameworks.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#C8102E',
-                        'secondary': '#0A0A0A',
-                        'accent': '#FFD700',
+                        'sovereign-black': '#0A0A0A',
+                        'sovereign-red': '#C8102E',
+                        'sovereign-gold': '#D4AF37',
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #0A0A0A;
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .counter {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #FFD700;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-        }
-        .modal-content {
-            background-color: #0A0A0A;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #C8102E;
-            width: 80%;
-            max-width: 600px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        body { background-color: #0A0A0A; color: white; font-family: 'Inter', sans-serif; }
+        .animate-fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .counter { font-size: 3rem; font-weight: bold; color: #D4AF37; }
     </style>
 </head>
-<body class="bg-secondary text-white">
+<body class="bg-sovereign-black text-white">
+    <!-- Navigation -->
+    <nav class="bg-sovereign-black border-b border-sovereign-red py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-sovereign-gold">Sovereign Capital</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-sovereign-red transition">Home</a></li>
+                <li><a href="products.html" class="hover:text-sovereign-red transition">Products</a></li>
+                <li><a href="courses.html" class="hover:text-sovereign-red transition">Courses</a></li>
+                <li><a href="saas.html" class="hover:text-sovereign-red transition">SaaS Tools</a></li>
+                <li><a href="about.html" class="hover:text-sovereign-red transition">About</a></li>
+                <li><a href="terms.html" class="hover:text-sovereign-red transition">Terms</a></li>
+                <li><a href="contact.html" class="hover:text-sovereign-red transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center px-4 animate-fade-in">
-        <div class="text-center max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">
-                Build Unbreakable Wealth in 90 Days
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-300">
-                Debt destruction systems, AI-powered tools, and proven investment frameworks used by top performers.
-            </p>
-            <div class="counter mb-8" id="wealth-counter">₹0</div>
-            <button onclick="scrollToTools()" class="bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition duration-300">
-                Get Started
-            </button>
-        </div>
-    </section>
-
-    <!-- Tools & Products Grid -->
-    <section id="tools" class="py-20 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Our Premium Tools</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer" onclick="openModal('debt-destroyer')">
-                    <h3 class="text-2xl font-bold mb-4">Debt Destroyer Toolkit</h3>
-                    <p class="text-gray-300 mb-4">Eliminate debt faster with strategic payoff plans.</p>
-                    <p class="text-accent font-bold">₹4,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Buy Now</button>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer" onclick="openModal('90-day-system')">
-                    <h3 class="text-2xl font-bold mb-4">90-Day System</h3>
-                    <p class="text-gray-300 mb-4">Accelerate wealth building with proven frameworks.</p>
-                    <p class="text-accent font-bold">₹9,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Buy Now</button>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer" onclick="openModal('fire-calculator')">
-                    <h3 class="text-2xl font-bold mb-4">FIRE Calculator</h3>
-                    <p class="text-gray-300 mb-4">Calculate your path to financial independence.</p>
-                    <p class="text-accent font-bold">₹1,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Buy Now</button>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer" onclick="openModal('credit-rebuilder')">
-                    <h3 class="text-2xl font-bold mb-4">Credit Rebuilder</h3>
-                    <p class="text-gray-300 mb-4">Repair and optimize your credit score.</p>
-                    <p class="text-accent font-bold">₹2,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Buy Now</button>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer" onclick="openModal('investment-xray')">
-                    <h3 class="text-2xl font-bold mb-4">Investment X-Ray</h3>
-                    <p class="text-gray-300 mb-4">Analyze investments with AI insights.</p>
-                    <p class="text-accent font-bold">₹5,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Buy Now</button>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer" onclick="openModal('monthly-insights')">
-                    <h3 class="text-2xl font-bold mb-4">Monthly Insights</h3>
-                    <p class="text-gray-300 mb-4">Personalized financial reports and advice.</p>
-                    <p class="text-accent font-bold">₹999/month</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Buy Now</button>
-                </div>
+    <section class="py-20 text-center">
+        <h1 class="text-5xl font-bold mb-4 animate-fade-in">Accelerate Your Wealth with Sovereign Precision</h1>
+        <p class="text-xl mb-8">Professional tools and insights for high-net-worth individuals seeking financial sovereignty.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div>
+                <div class="counter" data-target="50000">0</div>
+                <p>Active Members</p>
+            </div>
+            <div>
+                <div class="counter" data-target="2500000">0</div>
+                <p>Total Wealth Managed ($M)</p>
+            </div>
+            <div>
+                <div class="counter" data-target="98">0</div>
+                <p>Client Satisfaction (%)</p>
             </div>
         </div>
+        <a href="products.html" class="bg-sovereign-red hover:bg-red-700 text-white px-8 py-3 rounded transition">Explore Products</a>
     </section>
 
-    <!-- Courses Section -->
-    <section id="courses" class="py-20 px-4 bg-gray-900">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Flagship Courses</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-secondary p-6 rounded-lg">
-                    <div class="relative mb-4">
-                        <img src="https://via.placeholder.com/400x225/333/fff?text=Course+1" alt="Course 1" class="w-full rounded">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300 bg-black bg-opacity-50 rounded">
-                            <button class="text-white text-4xl">▶</button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Wealth Acceleration Masterclass</h3>
-                    <p class="text-gray-300 mb-4">Comprehensive course on building wealth.</p>
-                    <p class="text-accent font-bold mb-4">₹19,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded">Enroll Now</button>
-                </div>
-                <div class="bg-secondary p-6 rounded-lg">
-                    <div class="relative mb-4">
-                        <img src="https://via.placeholder.com/400x225/333/fff?text=Course+2" alt="Course 2" class="w-full rounded">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300 bg-black bg-opacity-50 rounded">
-                            <button class="text-white text-4xl">▶</button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Debt Freedom Blueprint</h3>
-                    <p class="text-gray-300 mb-4">Strategies to eliminate debt permanently.</p>
-                    <p class="text-accent font-bold mb-4">₹14,999</p>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded">Enroll Now</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Revenue & Proof Section -->
-    <section id="proof" class="py-20 px-4">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-12">Live Member Wealth Created</h2>
-            <div class="counter mb-8" id="total-wealth">₹0</div>
-            <div id="testimonials" class="space-y-4">
-                <div class="bg-gray-900 p-6 rounded-lg">
-                    <p class="text-gray-300 italic">"Sovereign Capital transformed my finances. Up ₹2.5 Cr in 6 months."</p>
-                    <p class="text-accent font-bold">- Rajesh Kumar, Mumbai</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hidden">
-                    <p class="text-gray-300 italic">"The tools are game-changing. Highly recommend."</p>
-                    <p class="text-accent font-bold">- Sarah Johnson, New York</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg hidden">
-                    <p class="text-gray-300 italic">"Professional and effective wealth building."</p>
-                    <p class="text-accent font-bold">- Amit Patel, Delhi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 px-4 bg-gray-900">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Choose Your Plan</h2>
-            <div class="flex justify-center mb-8">
-                <button id="one-time-btn" class="bg-primary text-white py-2 px-4 rounded-l" onclick="setPricing('one-time')">One-Time</button>
-                <button id="monthly-btn" class="bg-gray-700 text-white py-2 px-4 rounded-r" onclick="setPricing('monthly')">Monthly</button>
-            </div>
+    <!-- Tools Grid -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Core Tools</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-secondary p-6 rounded-lg text-center">
-                    <h3 class="text-2xl font-bold mb-4">Starter</h3>
-                    <p class="text-accent font-bold text-3xl mb-4" id="starter-price">₹4,999</p>
-                    <ul class="text-left mb-6">
-                        <li>Basic tools access</li>
-                        <li>Email support</li>
-                        <li>Community forum</li>
-                    </ul>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded">Get Started</button>
+                <div class="bg-sovereign-black border border-sovereign-gold p-6 rounded hover:shadow-lg transition transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4 text-sovereign-gold">Debt Management</h3>
+                    <p>Strategic debt elimination strategies for accelerated wealth building.</p>
                 </div>
-                <div class="bg-secondary p-6 rounded-lg text-center border-2 border-primary">
-                    <h3 class="text-2xl font-bold mb-4">Professional</h3>
-                    <p class="text-accent font-bold text-3xl mb-4" id="pro-price">₹9,999</p>
-                    <ul class="text-left mb-6">
-                        <li>All tools & courses</li>
-                        <li>Priority support</li>
-                        <li>Monthly webinars</li>
-                    </ul>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded">Get Started</button>
+                <div class="bg-sovereign-black border border-sovereign-gold p-6 rounded hover:shadow-lg transition transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4 text-sovereign-gold">Credit Optimization</h3>
+                    <p>Advanced credit scoring techniques to unlock financial opportunities.</p>
                 </div>
-                <div class="bg-secondary p-6 rounded-lg text-center">
-                    <h3 class="text-2xl font-bold mb-4">Elite</h3>
-                    <p class="text-accent font-bold text-3xl mb-4" id="elite-price">₹19,999</p>
-                    <ul class="text-left mb-6">
-                        <li>Everything + 1-on-1 coaching</li>
-                        <li>Dedicated advisor</li>
-                        <li>Custom strategies</li>
-                    </ul>
-                    <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded">Get Started</button>
+                <div class="bg-sovereign-black border border-sovereign-gold p-6 rounded hover:shadow-lg transition transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4 text-sovereign-gold">Investment Insights</h3>
+                    <p>Data-driven investment strategies for long-term wealth preservation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Client Testimonials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-900 p-6 rounded border-l-4 border-sovereign-red">
+                    <p class="mb-4">"Sovereign Capital transformed my financial outlook. Their tools are precise and effective."</p>
+                    <p class="text-sovereign-gold">- John D., CEO</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded border-l-4 border-sovereign-red">
+                    <p class="mb-4">"Professional-grade insights that delivered real results. Highly recommend."</p>
+                    <p class="text-sovereign-gold">- Sarah L., Investor</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 px-4 bg-black text-center">
-        <p>&copy; Sovereign Capital 2026. All rights reserved.</p>
-        <div class="mt-4 space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
-            <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
-            <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+    <footer class="bg-sovereign-black border-t border-sovereign-red py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2026 Sovereign Capital. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="terms.html" class="hover:text-sovereign-red transition mr-4">Terms</a>
+                <a href="contact.html" class="hover:text-sovereign-red transition">Contact</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Modals -->
-    <div id="debt-destroyer-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('debt-destroyer')">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Debt Destroyer Toolkit</h2>
-            <p>Detailed description here...</p>
-            <button class="bg-primary hover:bg-red-700 text-white py-2 px-4 rounded mt-4">Add to Cart</button>
-        </div>
-    </div>
-    <!-- Add similar modals for other tools -->
-
     <script>
-        // Animated Counter for Hero
-        function animateCounter(elementId, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
+        // Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
                 }
-                document.getElementById(elementId).innerText = '₹' + Math.floor(current).toLocaleString() + '+';
-            }, 50);
-        }
-        animateCounter('wealth-counter', 124000000); // ₹12.4 Cr
+            });
+        };
 
-        // Scroll to Tools
-        function scrollToTools() {
-            document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Modals
-        function openModal(modalId) {
-            document.getElementById(modalId + '-modal').style.display = 'block';
-        }
-        function closeModal(modalId) {
-            document.getElementById(modalId + '-modal').style.display = 'none';
-        }
-
-        // Testimonials Carousel
-        let testimonialIndex = 0;
-        setInterval(() => {
-            const testimonials = document.querySelectorAll('#testimonials > div');
-            testimonials.forEach(t => t.classList.add('hidden'));
-            testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-            testimonials[testimonialIndex].classList.remove('hidden');
-        }, 3000);
-
-        // Pricing Toggle
-        function setPricing(type) {
-            const starter = document.getElementById('starter-price');
-            const pro = document.getElementById('pro-price');
-            const elite = document.getElementById('elite-price');
-            const oneTimeBtn = document.getElementById('one-time-btn');
-            const monthlyBtn = document.getElementById('monthly-btn');
-
-            if (type === 'one-time') {
-                starter.innerText = '₹4,999';
-                pro.innerText = '₹9,999';
-                elite.innerText = '₹19,999';
-                oneTimeBtn.classList.add('bg-primary');
-                oneTimeBtn.classList.remove('bg-gray-700');
-                monthlyBtn.classList.add('bg-gray-700');
-                monthlyBtn.classList.remove('bg-primary');
-            } else {
-                starter.innerText = '₹499/month';
-                pro.innerText = '₹999/month';
-                elite.innerText = '₹1,999/month';
-                monthlyBtn.classList.add('bg-primary');
-                monthlyBtn.classList.remove('bg-gray-700');
-                oneTimeBtn.classList.add('bg-gray-700');
-                oneTimeBtn.classList.remove('bg-primary');
-            }
-        }
-
-        // Animate Total Wealth
-        animateCounter('total-wealth', 500000000); // ₹50 Cr example
+        window.addEventListener('load', animateCounters);
     </script>
 </body>
 </html>
