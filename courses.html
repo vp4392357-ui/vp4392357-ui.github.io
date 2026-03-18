@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sovereign Capital Courses — Wealth Education Suite</title>
+    <meta
+      name="description"
+      content="Discover Sovereign Capital's premium Mini and Full courses with curriculum breakdowns, luxury learning design, and enrollment pathways."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sovereign: {
+                black: "#050505",
+                red: "#C8102E",
+                gold: "#D4AF37",
+                ivory: "#F5F1E8",
+                muted: "#B7AEA3",
+                panel: "#0B0B0D"
+              }
+            },
+            fontFamily: {
+              display: ['"Georgia"', '"Times New Roman"', "serif"],
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              glow: "0 0 30px rgba(200,16,46,0.18)",
+              gold: "0 0 40px rgba(212,175,55,0.12)"
+            },
+            backgroundImage: {
+              grid:
+                "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)"
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+      :root { color-scheme: dark; }
+      * { cursor: none; }
+      body {
+        background:
+          radial-gradient(circle at top, rgba(200,16,46,0.14), transparent 25%),
+          radial-gradient(circle at 85% 15%, rgba(212,175,55,0.08), transparent 20%),
+          linear-gradient(180deg, #050505 0%, #090909 100%);
+      }
+      .glass {
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .card-tilt {
+        transform-style: preserve-3d;
+        transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card-tilt:hover {
+        border-color: rgba(212,175,55,0.35);
+        box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 0 32px rgba(212,175,55,0.08);
+      }
+      .card-tilt > * { transform: translateZ(18px); }
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        pointer-events: none;
+        border-radius: 999px;
+        z-index: 9999;
+        mix-blend-mode: screen;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #d4af37;
+      }
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(212,175,55,0.45);
+        box-shadow: 0 0 24px rgba(212,175,55,0.12);
+      }
+      .video-glow {
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 40px rgba(212,175,55,0.08);
+      }
+      @media (max-width: 768px) {
+        * { cursor: auto; }
+        .cursor-dot, .cursor-ring { display: none; }
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden bg-sovereign-black text-sovereign-ivory font-sans selection:bg-sovereign-red/30 selection:text-white">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="fixed inset-0 bg-grid bg-[size:44px_44px] opacity-[0.04] pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/80 backdrop-blur-xl">
+      <nav class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-full border border-sovereign-gold/40 bg-white/5 shadow-gold">
+              <span class="font-display text-lg text-sovereign-gold">SC</span>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.45em] text-sovereign-muted">Sovereign</p>
+              <p class="font-display text-xl tracking-wide">Capital</p>
+            </div>
+          </a>
+
+          <div class="hidden md:flex items-center gap-8 text-sm text-sovereign-muted">
+            <a href="products.html" class="hover:text-sovereign-ivory transition">Products</a>
+            <a href="courses.html" class="text-sovereign-ivory">Courses</a>
+            <a href="insights.html" class="hover:text-sovereign-ivory transition">Insights</a>
+            <a href="about.html" class="hover:text-sovereign-ivory transition">About</a>
+            <a href="terms.html" class="hover:text-sovereign-ivory transition">Terms</a>
+          </div>
+
+          <a href="#" class="rounded-full border border-sovereign-gold/30 bg-white/5 px-5 py-2.5 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/70 hover:bg-sovereign-gold/10">
+            Enroll Privately
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-8 lg:pb-24 lg:pt-24">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div class="hero-copy">
+            <div class="inline-flex items-center gap-3 rounded-full border border-sovereign-gold/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-sovereign-gold">
+              Premium Education Suite
+            </div>
+            <h1 class="mt-6 font-display text-5xl leading-tight sm:text-6xl lg:text-7xl">
+              Wealth education designed like a private operating manual.
+            </h1>
+            <p class="mt-8 max-w-2xl text-lg leading-8 text-sovereign-muted">
+              The Sovereign learning environment turns financial theory into elegant execution. Study the fast-entry Mini Course or immerse yourself in the flagship Full Course built for disciplined wealth builders.
+            </p>
+
+            <div class="mt-10 grid gap-5 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Mini Course</p>
+                <p class="mt-3 font-display text-4xl text-sovereign-gold">$67</p>
+                <p class="mt-2 text-sm text-sovereign-muted">7 modules · rapid clarity</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Full Course</p>
+                <p class="mt-3 font-display text-4xl text-sovereign-gold">$147</p>
+                <p class="mt-2 text-sm text-sovereign-muted">15 modules · flagship depth</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-[2rem] border border-white/10 p-6">
+            <div class="video-glow relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/50 p-6">
+              <div class="absolute inset-0 bg-gradient-to-br from-sovereign-gold/10 via-transparent to-sovereign-red/10"></div>
+              <div class="relative">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-gold">Preview Experience</p>
+                <div class="mt-6 flex aspect-video items-center justify-center rounded-[1.25rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-sovereign-red/[0.08]">
+                  <button id="playPreview" class="group inline-flex h-20 w-20 items-center justify-center rounded-full border border-sovereign-gold/35 bg-black/40 text-sovereign-gold transition hover:scale-105 hover:bg-sovereign-gold/10">
+                    <span class="ml-1 text-2xl">▶</span>
+                  </button>
+                </div>
+                <div class="mt-5 grid gap-4 sm:grid-cols-3">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-sovereign-muted">Format</p>
+                    <p class="mt-2 text-sm text-white">Video + worksheets</p>
+                  </div>
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-sovereign-muted">Style</p>
+                    <p class="mt-2 text-sm text-white">Minimal, tactical</p>
+                  </div>
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-sovereign-muted">Access</p>
+                    <p class="mt-2 text-sm text-white">Instant digital</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+        <div class="grid gap-8 xl:grid-cols-2">
+          <article class="card-tilt reveal overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
+            <div class="border-b border-white/10 p-8">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Mini Course</p>
+                  <h2 class="mt-4 font-display text-4xl">Rapid Wealth Clarity</h2>
+                </div>
+                <span class="rounded-full border border-sovereign-gold/20 bg-sovereign-gold/10 px-4 py-2 text-sm text-sovereign-gold">$67</span>
+              </div>
+              <p class="mt-6 max-w-2xl leading-8 text-sovereign-muted">
+                Built for decisive learners who want a polished, fast-path education on debt elimination, cash flow control, and modern wealth acceleration mechanics.
+              </p>
+            </div>
+            <div class="p-8">
+              <div class="grid gap-4">
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">01</span> Financial Positioning & Debt Awareness</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">02</span> Credit Utilization and Cashflow Stabilization</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">03</span> Liability Compression Framework</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">04</span> Emergency Buffer Design</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">05</span> Behavioral Spending Architecture</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">06</span> Wealth Velocity Foundations</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">07</span> 30-Day Execution Sprint</div>
+              </div>
+
+              <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                <a href="#" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+                  Enroll in Mini Course
+                </a>
+                <button class="open-preview inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10" data-course="Mini Course">
+                  Watch Preview
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-tilt reveal overflow-hidden rounded-[2rem] border border-sovereign-gold/20 bg-gradient-to-br from-white/[0.04] to-sovereign-red/[0.06]">
+            <div class="border-b border-white/10 p-8">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Full Course</p>
+                  <h2 class="mt-4 font-display text-4xl">Flagship Wealth Architecture</h2>
+                </div>
+                <span class="rounded-full border border-sovereign-gold/20 bg-sovereign-gold/10 px-4 py-2 text-sm text-sovereign-gold">$147</span>
+              </div>
+              <p class="mt-6 max-w-2xl leading-8 text-sovereign-muted">
+                A deeper, more executive-grade curriculum designed to help serious learners build a full financial operating system—from debt compression to generational wealth architecture.
+              </p>
+            </div>
+            <div class="p-8">
+              <div class="grid gap-4">
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">01</span> Wealth Identity and Financial Operating Principles</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">02</span> Debt Mapping and Strategic Prioritization</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">03</span> Credit Repair Mechanics and Utilization Control</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">04</span> Cash Flow Engineering for High Performers</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">05</span> Emergency Capital and Risk Framing</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">06</span> Systems for Financial Discipline</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">07</span> Wealth Velocity and Opportunity Filtering</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">08</span> Income Expansion and Revenue Logic</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">09</span> Digital Assets and Modern Leverage</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">10</span> AI Tools for Execution Efficiency</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">11</span> Strategic Monthly Review Systems</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">12</span> Capital Allocation Frameworks</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">13</span> Relationship Between Debt Freedom and Wealth Compounding</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">14</span> Long-Term Sovereign Planning</div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5"><span class="text-sovereign-gold">15</span> Generational Wealth Blueprint</div>
+              </div>
+
+              <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                <a href="#" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+                  Enroll in Full Course
+                </a>
+                <button class="open-preview inline-flex items-center justify-center rounded-full border border-sovereign-gold/30 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:bg-sovereign-gold/10" data-course="Full Course">
+                  Watch Preview
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="reveal rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
+            <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Learning Design</p>
+            <h3 class="mt-4 font-display text-2xl">Minimal, premium, actionable</h3>
+            <p class="mt-4 text-sm leading-7 text-sovereign-muted">No bloated theory. Every lesson is structured for calm clarity and immediate execution.</p>
+          </div>
+          <div class="reveal rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
+            <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Access</p>
+            <h3 class="mt-4 font-display text-2xl">Instant digital delivery</h3>
+            <p class="mt-4 text-sm leading-7 text-sovereign-muted">Begin the moment you enroll, with downloadable frameworks and implementation tools.</p>
+          </div>
+          <div class="reveal rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
+            <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Outcome</p>
+            <h3 class="mt-4 font-display text-2xl">A sharper financial operating system</h3>
+            <p class="mt-4 text-sm leading-7 text-sovereign-muted">Learn to think with more structure, allocate capital with more discipline, and move with more confidence.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/40">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-4 lg:px-8">
+        <div class="lg:col-span-2">
+          <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Sovereign Capital</p>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-sovereign-muted">
+            Educational infrastructure for disciplined debt elimination, elegant cash flow control, and long-term wealth compounding.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-white">Explore</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <a href="products.html" class="hover:text-white">Products</a>
+            <a href="insights.html" class="hover:text-white">Insights</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm text-white">Company</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="about.html" class="hover:text-white">About</a>
+            <a href="terms.html" class="hover:text-white">Terms & Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="previewModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/75 backdrop-blur-xl"></div>
+      <div class="relative z-10 w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B0B0D]">
+        <div class="absolute inset-0 bg-gradient-to-br from-sovereign-gold/10 via-transparent to-sovereign-red/10"></div>
+        <div class="relative p-8 lg:p-10">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Video Preview</p>
+              <h3 id="previewTitle" class="mt-3 font-display text-4xl text-white"></h3>
+            </div>
+            <button id="closePreview" class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-sovereign-muted transition hover:text-white">
+              Close
+            </button>
+          </div>
+          <div class="mt-8 flex aspect-video items-center justify-center rounded-[1.5rem] border border-white/10 bg-gradient-to-br from-white/[0.05] to-sovereign-red/[0.08]">
+            <div class="text-center">
+              <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-sovereign-gold/35 bg-black/40 text-2xl text-sovereign-gold">▶</div>
+              <p class="mt-5 text-sovereign-muted">Private cinematic preview placeholder</p>
+            </div>
+          </div>
+          <p class="mt-6 leading-8 text-sovereign-muted">
+            This preview surface is ready to swap with a hosted video embed when production media assets are finalized.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const previewModal = document.getElementById("previewModal");
+      const previewTitle = document.getElementById("previewTitle");
+      const closePreview = document.getElementById("closePreview");
+
+      function openPreview(title) {
+        previewTitle.textContent = title;
+        previewModal.classList.remove("hidden");
+        previewModal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+
+        gsap.fromTo(
+          previewModal.querySelector(".relative.z-10"),
+          { y: 30, opacity: 0, scale: 0.98 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }
+        );
+      }
+
+      function closePreviewModal() {
+        previewModal.classList.add("hidden");
+        previewModal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      document.getElementById("playPreview").addEventListener("click", () => openPreview("Sovereign Capital Course Experience"));
+      document.querySelectorAll(".open-preview").forEach((button) => {
+        button.addEventListener("click", () => openPreview(button.dataset.course));
+      });
+      closePreview.addEventListener("click", closePreviewModal);
+      previewModal.addEventListener("click", (e) => {
+        if (e.target === previewModal || e.target === previewModal.firstElementChild) closePreviewModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closePreviewModal();
+      });
+
+      gsap.from(".hero-copy > *", {
+        y: 22,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+
+      gsap.utils.toArray(".reveal").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 86%"
+          },
+          y: 36,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out"
+        });
+      });
+
+      document.querySelectorAll(".card-tilt").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+          const rotateY = ((x / rect.width) - 0.5) * 10;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        });
+      });
+
+      const dot = document.querySelector(".cursor-dot");
+      const ring = document.querySelector(".cursor-ring");
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      });
+
+      function animateRing() {
+        if (ring) {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          ring.style.transform = `translate(${ringX - 17}px, ${ringY - 17}px)`;
+        }
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+    </script>
+  </body>
+</html>
