@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Sovereign Capital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sovereign-black': '#0A0A0A',
+                        'sovereign-red': '#C8102E',
+                        'sovereign-gold': '#D4AF37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0A0A0A; color: white; font-family: 'Inter', sans-serif; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+        .modal-content { background-color: #0A0A0A; margin: 15% auto; padding: 20px; border: 1px solid #C8102E; width: 80%; max-width: 600px; border-radius: 8px; }
+        .close { color: #D4AF37; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-sovereign-black text-white">
+    <!-- Navigation -->
+    <nav class="bg-sovereign-black border-b border-sovereign-red py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-sovereign-gold">Sovereign Capital</a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-sovereign-red transition">Home</a></li>
+                <li><a href="products.html" class="hover:text-sovereign-red transition">Products</a></li>
+                <li><a href="courses.html" class="hover:text-sovereign-red transition">Courses</a></li>
+                <li><a href="saas.html" class="hover:text-sovereign-red transition">SaaS Tools</a></li>
+                <li><a href="about.html" class="hover:text-sovereign-red transition">About</a></li>
+                <li><a href="terms.html" class="hover:text-sovereign-red transition">Terms</a></li>
+                <li><a href="contact.html" class="hover:text-sovereign-red transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-12">Our Products</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Debt Destroyer Toolkit -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('debt-destroyer')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Debt Destroyer Toolkit</h3>
+                    <p class="mb-4">Comprehensive debt elimination strategies.</p>
+                    <p class="text-sovereign-red font-bold">$9</p>
+                </div>
+                <!-- 90-Day Credit Destroyer System -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('credit-destroyer')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">90-Day Credit Destroyer System</h3>
+                    <p class="mb-4">Accelerated credit repair program.</p>
+                    <p class="text-sovereign-red font-bold">$47</p>
+                </div>
+                <!-- Mini Course -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('mini-course')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Mini Course</h3>
+                    <p class="mb-4">Essential wealth building fundamentals.</p>
+                    <p class="text-sovereign-red font-bold">$67</p>
+                </div>
+                <!-- Full Course -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('full-course')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Full Course</h3>
+                    <p class="mb-4">Complete wealth acceleration curriculum.</p>
+                    <p class="text-sovereign-red font-bold">$147</p>
+                </div>
+                <!-- Mega-Bundle -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('mega-bundle')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Mega-Bundle</h3>
+                    <p class="mb-4">All tools and courses combined.</p>
+                    <p class="text-sovereign-red font-bold">$297</p>
+                </div>
+                <!-- SaaS Starter -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('saas-starter')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">SaaS Starter</h3>
+                    <p class="mb-4">Basic automation tools.</p>
+                    <p class="text-sovereign-red font-bold">$19/mo</p>
+                </div>
+                <!-- SaaS Pro -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('saas-pro')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">SaaS Pro</h3>
+                    <p class="mb-4">Advanced analytics and reporting.</p>
+                    <p class="text-sovereign-red font-bold">$29/mo</p>
+                </div>
+                <!-- SaaS Premium -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('saas-premium')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">SaaS Premium</h3>
+                    <p class="mb-4">Portfolio management suite.</p>
+                    <p class="text-sovereign-red font-bold">$49/mo</p>
+                </div>
+                <!-- SaaS Elite -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('saas-elite')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">SaaS Elite</h3>
+                    <p class="mb-4">AI-driven investment strategies.</p>
+                    <p class="text-sovereign-red font-bold">$79/mo</p>
+                </div>
+                <!-- SaaS Ultimate -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('saas-ultimate')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">SaaS Ultimate</h3>
+                    <p class="mb-4">Full wealth management platform.</p>
+                    <p class="text-sovereign-red font-bold">$149/mo</p>
+                </div>
+                <!-- Vault Membership -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('vault-membership')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Vault Membership</h3>
+                    <p class="mb-4">Exclusive community access.</p>
+                    <p class="text-sovereign-red font-bold">$49/mo</p>
+                </div>
+                <!-- Premium Insights Reports -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('premium-insights')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Premium Insights Reports</h3>
+                    <p class="mb-4">Monthly market analysis.</p>
+                    <p class="text-sovereign-red font-bold">$49/mo</p>
+                </div>
+                <!-- Podcast Premium Episodes -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('podcast-premium')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Podcast Premium Episodes</h3>
+                    <p class="mb-4">Exclusive audio content.</p>
+                    <p class="text-sovereign-red font-bold">$9.99/mo</p>
+                </div>
+                <!-- AI Agent Rental Basic -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('ai-agent-basic')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">AI Agent Rental - Basic</h3>
+                    <p class="mb-4">Entry-level AI assistance.</p>
+                    <p class="text-sovereign-red font-bold">$99/mo</p>
+                </div>
+                <!-- AI Agent Rental Pro -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('ai-agent-pro')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">AI Agent Rental - Pro</h3>
+                    <p class="mb-4">Advanced AI automation.</p>
+                    <p class="text-sovereign-red font-bold">$199/mo</p>
+                </div>
+                <!-- Throne Room High-Ticket -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('throne-room')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Throne Room High-Ticket</h3>
+                    <p class="mb-4">VIP wealth coaching program.</p>
+                    <p class="text-sovereign-red font-bold">$2,997</p>
+                </div>
+                <!-- Digital Nation Citizenship Basic -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('digital-citizenship-basic')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Digital Nation Citizenship - Basic</h3>
+                    <p class="mb-4">Entry-level digital residency.</p>
+                    <p class="text-sovereign-red font-bold">$499</p>
+                </div>
+                <!-- Digital Nation Citizenship Premium -->
+                <div class="bg-gray-900 p-6 rounded border border-sovereign-gold hover:shadow-lg transition transform hover:scale-105 cursor-pointer" onclick="openModal('digital-citizenship-premium')">
+                    <h3 class="text-xl font-bold mb-2 text-sovereign-gold">Digital Nation Citizenship - Premium</h3>
+                    <p class="mb-4">Full digital citizenship benefits.</p>
+                    <p class="text-sovereign-red font-bold">$999</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="debt-destroyer" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('debt-destroyer')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Debt Destroyer Toolkit</h2>
+            <p class="mb-4">Comprehensive debt elimination strategies including negotiation templates, payment plans, and debt consolidation guides. Perceived value: $500+ in savings.</p>
+            <p class="mb-4"><strong>Bonuses:</strong> Debt Tracker Spreadsheet, Negotiation Scripts.</p>
+            <p class="text-sovereign-red font-bold mb-4">$9</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Buy Now</a>
+        </div>
+    </div>
+    <!-- Add similar modals for all products -->
+    <div id="credit-destroyer" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('credit-destroyer')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">90-Day Credit Destroyer System</h2>
+            <p class="mb-4">Accelerated credit repair program with step-by-step guides, dispute letters, and monitoring tools. Perceived value: $1,000+ in credit improvement.</p>
+            <p class="mb-4"><strong>Bonuses:</strong> Credit Monitoring Dashboard, Dispute Letter Templates.</p>
+            <p class="text-sovereign-red font-bold mb-4">$47</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Buy Now</a>
+        </div>
+    </div>
+    <div id="mini-course" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mini-course')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Mini Course</h2>
+            <p class="mb-4">Essential wealth building fundamentals covering budgeting, saving, and basic investing. 5 modules, 10 hours of content. Perceived value: $500+ in knowledge.</p>
+            <p class="mb-4"><strong>Bonuses:</strong> Budget Templates, Investment Calculator.</p>
+            <p class="text-sovereign-red font-bold mb-4">$67</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Buy Now</a>
+        </div>
+    </div>
+    <div id="full-course" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('full-course')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Full Course</h2>
+            <p class="mb-4">Complete wealth acceleration curriculum including advanced investing, tax strategies, and portfolio management. 20 modules, 50 hours of content. Perceived value: $2,000+ in education.</p>
+            <p class="mb-4"><strong>Bonuses:</strong> All mini course content, Tax Optimization Guide, Portfolio Tracker.</p>
+            <p class="text-sovereign-red font-bold mb-4">$147</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Buy Now</a>
+        </div>
+    </div>
+    <div id="mega-bundle" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mega-bundle')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Mega-Bundle</h2>
+            <p class="mb-4">All tools and courses combined for maximum value. Includes everything from debt management to advanced investing. Perceived value: $5,000+ in comprehensive wealth building.</p>
+            <p class="mb-4"><strong>Bonuses:</strong> Lifetime Access, Priority Support, Exclusive Webinars.</p>
+            <p class="text-sovereign-red font-bold mb-4">$297</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Buy Now</a>
+        </div>
+    </div>
+    <div id="saas-starter" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('saas-starter')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">SaaS Starter</h2>
+            <p class="mb-4">Basic automation tools for personal finance tracking, expense categorization, and simple reporting. Perceived value: $200/mo in time savings.</p>
+            <p class="mb-4"><strong>Features:</strong> Expense Tracking, Basic Reports, Mobile App.</p>
+            <p class="text-sovereign-red font-bold mb-4">$19/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="saas-pro" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('saas-pro')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">SaaS Pro</h2>
+            <p class="mb-4">Advanced analytics and reporting for portfolio management, including risk assessment and performance metrics. Perceived value: $500/mo in insights.</p>
+            <p class="mb-4"><strong>Features:</strong> All Starter features, Advanced Analytics, Risk Assessment, API Access.</p>
+            <p class="text-sovereign-red font-bold mb-4">$29/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="saas-premium" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('saas-premium')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">SaaS Premium</h2>
+            <p class="mb-4">Portfolio management suite with automated rebalancing, tax-loss harvesting, and multi-asset support. Perceived value: $1,000/mo in management.</p>
+            <p class="mb-4"><strong>Features:</strong> All Pro features, Automated Rebalancing, Tax Optimization, Multi-Asset Support.</p>
+            <p class="text-sovereign-red font-bold mb-4">$49/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="saas-elite" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('saas-elite')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">SaaS Elite</h2>
+            <p class="mb-4">AI-driven investment strategies with predictive analytics, alternative investments, and personalized recommendations. Perceived value: $2,000/mo in AI insights.</p>
+            <p class="mb-4"><strong>Features:</strong> All Premium features, AI Recommendations, Alternative Investments, Predictive Analytics.</p>
+            <p class="text-sovereign-red font-bold mb-4">$79/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="saas-ultimate" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('saas-ultimate')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">SaaS Ultimate</h2>
+            <p class="mb-4">Full wealth management platform with family office features, estate planning integration, and dedicated account management. Perceived value: $5,000/mo in comprehensive service.</p>
+            <p class="mb-4"><strong>Features:</strong> All Elite features, Family Office Tools, Estate Planning, Dedicated Support.</p>
+            <p class="text-sovereign-red font-bold mb-4">$149/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="vault-membership" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('vault-membership')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Vault Membership</h2>
+            <p class="mb-4">Exclusive community access with private forums, expert Q&A sessions, and networking events. Perceived value: $1,000/mo in connections.</p>
+            <p class="mb-4"><strong>Features:</strong> Private Forums, Expert Q&A, Networking Events, Exclusive Content.</p>
+            <p class="text-sovereign-red font-bold mb-4">$49/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="premium-insights" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('premium-insights')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Premium Insights Reports</h2>
+            <p class="mb-4">Monthly market analysis reports with macroeconomic trends, sector breakdowns, and investment opportunities. Perceived value: $500/mo in research.</p>
+            <p class="mb-4"><strong>Features:</strong> Monthly Reports, Macro Analysis, Sector Insights, Investment Ideas.</p>
+            <p class="text-sovereign-red font-bold mb-4">$49/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="podcast-premium" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('podcast-premium')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Podcast Premium Episodes</h2>
+            <p class="mb-4">Exclusive audio content with in-depth interviews, strategy discussions, and behind-the-scenes insights. Perceived value: $100/mo in premium content.</p>
+            <p class="mb-4"><strong>Features:</strong> Exclusive Episodes, Ad-Free Listening, Early Access, Bonus Content.</p>
+            <p class="text-sovereign-red font-bold mb-4">$9.99/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Subscribe</a>
+        </div>
+    </div>
+    <div id="ai-agent-basic" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ai-agent-basic')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">AI Agent Rental - Basic</h2>
+            <p class="mb-4">Entry-level AI assistance for basic financial analysis, data entry automation, and simple reporting. Perceived value: $300/mo in automation.</p>
+            <p class="mb-4"><strong>Features:</strong> Basic Analysis, Data Entry Automation, Simple Reports.</p>
+            <p class="text-sovereign-red font-bold mb-4">$99/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Rent Now</a>
+        </div>
+    </div>
+    <div id="ai-agent-pro" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ai-agent-pro')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">AI Agent Rental - Pro</h2>
+            <p class="mb-4">Advanced AI automation for portfolio optimization, risk modeling, and predictive analytics. Perceived value: $600/mo in advanced automation.</p>
+            <p class="mb-4"><strong>Features:</strong> All Basic features, Portfolio Optimization, Risk Modeling, Predictive Analytics.</p>
+            <p class="text-sovereign-red font-bold mb-4">$199/mo</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Rent Now</a>
+        </div>
+    </div>
+    <div id="throne-room" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('throne-room')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Throne Room High-Ticket</h2>
+            <p class="mb-4">VIP wealth coaching program with personalized strategy sessions, direct access to experts, and custom wealth plans. Perceived value: $10,000+ in personalized guidance.</p>
+            <p class="mb-4"><strong>Features:</strong> 1-on-1 Coaching, Custom Strategies, Expert Access, Ongoing Support.</p>
+            <p class="text-sovereign-red font-bold mb-4">$2,997</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Apply Now</a>
+        </div>
+    </div>
+    <div id="digital-citizenship-basic" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('digital-citizenship-basic')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Digital Nation Citizenship - Basic</h2>
+            <p class="mb-4">Entry-level digital residency with basic governance participation and community access. Perceived value: $1,000+ in digital assets.</p>
+            <p class="mb-4"><strong>Features:</strong> Basic Voting Rights, Community Access, Digital ID.</p>
+            <p class="text-sovereign-red font-bold mb-4">$499</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Apply Now</a>
+        </div>
+    </div>
+    <div id="digital-citizenship-premium" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('digital-citizenship-premium')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-sovereign-gold">Digital Nation Citizenship - Premium</h2>
+            <p class="mb-4">Full digital citizenship benefits with enhanced governance rights, premium services, and investment opportunities. Perceived value: $2,000+ in comprehensive benefits.</p>
+            <p class="mb-4"><strong>Features:</strong> Full Voting Rights, Premium Services, Investment Access, Enhanced Benefits.</p>
+            <p class="text-sovereign-red font-bold mb-4">$999</p>
+            <a href="#" class="bg-sovereign-red hover:bg-red-700 text-white px-6 py-2 rounded">Apply Now</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-sovereign-black border-t border-sovereign-red py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2026 Sovereign Capital. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
