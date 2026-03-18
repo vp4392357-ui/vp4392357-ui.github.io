@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sovereign Capital Products — Premium Wealth Systems</title>
+    <meta
+      name="description"
+      content="Explore Sovereign Capital's premium catalog of debt systems, SaaS dashboards, AI tools, memberships, reports, and wealth acceleration products."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sovereign: {
+                black: "#050505",
+                red: "#C8102E",
+                gold: "#D4AF37",
+                ivory: "#F5F1E8",
+                muted: "#B7AEA3",
+                panel: "#0B0B0D"
+              }
+            },
+            fontFamily: {
+              display: ['"Georgia"', '"Times New Roman"', "serif"],
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              glow: "0 0 30px rgba(200,16,46,0.18)",
+              gold: "0 0 40px rgba(212,175,55,0.12)"
+            },
+            backgroundImage: {
+              grid:
+                "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)"
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+      :root { color-scheme: dark; }
+      * { cursor: none; }
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(200,16,46,0.12), transparent 26%),
+          radial-gradient(circle at 85% 8%, rgba(212,175,55,0.08), transparent 20%),
+          linear-gradient(180deg, #050505 0%, #090909 100%);
+      }
+      .glass {
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .card-tilt {
+        transform-style: preserve-3d;
+        transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card-tilt:hover {
+        border-color: rgba(212,175,55,0.35);
+        box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 0 32px rgba(212,175,55,0.08);
+      }
+      .card-tilt > * { transform: translateZ(18px); }
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        pointer-events: none;
+        border-radius: 999px;
+        z-index: 9999;
+        mix-blend-mode: screen;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #d4af37;
+      }
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(212,175,55,0.45);
+        box-shadow: 0 0 24px rgba(212,175,55,0.12);
+      }
+      .modal-backdrop {
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .noise::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.04) 0.6px, transparent 0.6px);
+        background-size: 10px 10px;
+        opacity: 0.08;
+        pointer-events: none;
+      }
+      @media (max-width: 768px) {
+        * { cursor: auto; }
+        .cursor-dot, .cursor-ring { display: none; }
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden bg-sovereign-black text-sovereign-ivory font-sans selection:bg-sovereign-red/30 selection:text-white">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="fixed inset-0 bg-grid bg-[size:44px_44px] opacity-[0.04] pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/80 backdrop-blur-xl">
+      <nav class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-full border border-sovereign-gold/40 bg-white/5 shadow-gold">
+              <span class="font-display text-lg text-sovereign-gold">SC</span>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.45em] text-sovereign-muted">Sovereign</p>
+              <p class="font-display text-xl tracking-wide">Capital</p>
+            </div>
+          </a>
+
+          <div class="hidden md:flex items-center gap-8 text-sm text-sovereign-muted">
+            <a href="products.html" class="text-sovereign-ivory">Products</a>
+            <a href="courses.html" class="hover:text-sovereign-ivory transition">Courses</a>
+            <a href="insights.html" class="hover:text-sovereign-ivory transition">Insights</a>
+            <a href="about.html" class="hover:text-sovereign-ivory transition">About</a>
+            <a href="terms.html" class="hover:text-sovereign-ivory transition">Terms</a>
+          </div>
+
+          <a href="#" class="rounded-full border border-sovereign-gold/30 bg-white/5 px-5 py-2.5 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/70 hover:bg-sovereign-gold/10">
+            Private Checkout
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative isolate noise">
+        <div class="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-8 lg:pb-24 lg:pt-24">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div class="hero-copy">
+              <div class="inline-flex items-center gap-3 rounded-full border border-sovereign-gold/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-sovereign-gold">
+                Curated Product Library
+              </div>
+              <h1 class="mt-6 font-display text-5xl leading-tight sm:text-6xl lg:text-7xl">
+                Precision financial products for debt freedom and capital expansion.
+              </h1>
+              <p class="mt-8 max-w-2xl text-lg leading-8 text-sovereign-muted">
+                From immediate debt compression toolkits to recurring intelligence memberships and AI growth infrastructure, each offer is positioned to feel private, elegant, and high-conviction.
+              </p>
+            </div>
+
+            <div class="glass rounded-[2rem] border border-white/10 p-6">
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Offers</p>
+                  <p class="mt-3 font-display text-4xl">15</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Format</p>
+                  <p class="mt-3 font-display text-4xl text-sovereign-gold">Digital</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-black/30 p-5 sm:col-span-2">
+                  <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Conversion Layer</p>
+                  <p class="mt-3 text-sovereign-muted leading-7">
+                    Hover tilt cards, quick-view modal previews, premium pricing architecture, and direct buy-now pathways.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
+        <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Product Grid</p>
+            <h2 class="mt-4 font-display text-4xl">All Sovereign Capital offers</h2>
+          </div>
+          <p class="max-w-2xl text-sovereign-muted">
+            Every card includes a luxury quick-view experience with detailed positioning, included bonuses, and a direct purchase action.
+          </p>
+        </div>
+
+        <div id="productGrid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/40">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-4 lg:px-8">
+        <div class="lg:col-span-2">
+          <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Sovereign Capital</p>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-sovereign-muted">
+            Premium financial operating systems for ambitious individuals, founder households, and high-income professionals.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-white">Explore</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <a href="courses.html" class="hover:text-white">Courses</a>
+            <a href="insights.html" class="hover:text-white">Insights</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm text-white">Company</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="about.html" class="hover:text-white">About</a>
+            <a href="terms.html" class="hover:text-white">Terms & Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+      <div class="modal-backdrop absolute inset-0 bg-black/75"></div>
+      <div class="relative z-10 w-full max-w-3xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B0B0D] shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-sovereign-gold/10 via-transparent to-sovereign-red/10"></div>
+        <div class="relative p-8 lg:p-10">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p id="modalCategory" class="text-xs uppercase tracking-[0.45em] text-sovereign-gold"></p>
+              <h3 id="modalTitle" class="mt-3 font-display text-4xl text-white"></h3>
+              <p id="modalPrice" class="mt-4 text-lg text-sovereign-gold"></p>
+            </div>
+            <button id="closeModal" class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-sovereign-muted transition hover:text-white">
+              Close
+            </button>
+          </div>
+
+          <p id="modalDescription" class="mt-8 max-w-2xl leading-8 text-sovereign-muted"></p>
+
+          <div class="mt-8 grid gap-6 lg:grid-cols-2">
+            <div class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">What’s Included</p>
+              <ul id="modalIncludes" class="mt-5 space-y-3 text-sm leading-7 text-sovereign-ivory"></ul>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Bonuses</p>
+              <ul id="modalBonuses" class="mt-5 space-y-3 text-sm leading-7 text-sovereign-ivory"></ul>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a id="modalBuyLink" href="#" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+              Buy Now
+            </a>
+            <a href="courses.html" class="inline-flex items-center justify-center rounded-full border border-sovereign-gold/30 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:bg-sovereign-gold/10">
+              Explore Learning Paths
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const products = [
+        {
+          name: "Debt Destroyer Toolkit",
+          price: "$9",
+          category: "Debt Systems",
+          tag: "Fast Entry",
+          description: "A compact, high-clarity toolkit for identifying liability drag, organizing payoff sequencing, and creating your first serious debt elimination dashboard.",
+          includes: ["Debt inventory template", "Priority payoff calculator", "Monthly obligation tracker", "Quick-start action sheet"],
+          bonuses: ["Capital leak checklist", "Weekly momentum planner"],
+          href: "#"
+        },
+        {
+          name: "90-Day Credit Card Destroyer System",
+          price: "$47",
+          category: "Debt Systems",
+          tag: "Transformation",
+          description: "A focused quarter-long execution system designed to compress revolving balances and restore control over utilization, cash flow, and decision-making.",
+          includes: ["90-day payoff roadmap", "Credit utilization optimizer", "Weekly sprint prompts", "Behavioral spending reset framework"],
+          bonuses: ["Emergency buffer playbook", "Credit confidence script"],
+          href: "#"
+        },
+        {
+          name: "Debt-Free VIP",
+          price: "$297",
+          category: "Private Acceleration",
+          tag: "Premium",
+          description: "A premium debt freedom experience for members who want a deeper, more comprehensive pathway to eliminating debt and building capital discipline.",
+          includes: ["VIP transformation workbook", "Advanced payoff architecture", "Cashflow restructuring templates", "High-accountability execution framework"],
+          bonuses: ["Wealth velocity map", "Private planning pack"],
+          href: "#"
+        },
+        {
+          name: "SaaS Starter Dashboard",
+          price: "$19/mo",
+          category: "SaaS Stack",
+          tag: "Recurring",
+          description: "A lightweight operations dashboard for early-stage founders and operators who need clean visibility over leads, revenue, and execution priorities.",
+          includes: ["Core KPI dashboard", "Simple pipeline tracker", "Monthly reporting view", "Plug-and-play metric widgets"],
+          bonuses: ["Founder scorecard", "Weekly operating review template"],
+          href: "#"
+        },
+        {
+          name: "SaaS Pro",
+          price: "$29/mo",
+          category: "SaaS Stack",
+          tag: "Growth",
+          description: "Expanded reporting, smarter views, and tighter operating structure for businesses moving from survival into controlled growth.",
+          includes: ["Enhanced KPI layers", "Revenue trend modules", "Sales performance tracking", "Execution dashboard upgrades"],
+          bonuses: ["Offer optimization worksheet", "Client value ladder planner"],
+          href: "#"
+        },
+        {
+          name: "SaaS Premium",
+          price: "$49/mo",
+          category: "SaaS Stack",
+          tag: "Scale",
+          description: "A more executive-grade dashboard environment with richer reporting surfaces and strategic visibility across the business.",
+          includes: ["Executive dashboard suite", "Advanced cohort views", "Cashflow visibility layer", "Strategic metric snapshots"],
+          bonuses: ["Board-style summary template", "Premium forecast sheet"],
+          href: "#"
+        },
+        {
+          name: "SaaS Elite",
+          price: "$79/mo",
+          category: "SaaS Stack",
+          tag: "Executive",
+          description: "The highest-tier subscription for operators who want sharp dashboards, elite decision support, and an environment that feels custom-built.",
+          includes: ["Elite dashboard system", "Multi-view reporting architecture", "Strategic alerting modules", "Premium operator command center"],
+          bonuses: ["Scale bottleneck audit", "Quarterly growth planning framework"],
+          href: "#"
+        },
+        {
+          name: "Ultimate Bundle",
+          price: "$149/mo",
+          category: "Bundle Access",
+          tag: "All Access",
+          description: "A comprehensive access layer combining premium dashboards, insights, training pathways, and member-facing strategic assets.",
+          includes: ["Bundle-wide access", "Priority product library", "Reports + dashboard combo", "Cross-offer integration benefits"],
+          bonuses: ["Private allocation worksheet", "Strategic leverage planner"],
+          href: "#"
+        },
+        {
+          name: "Mini Course (7 modules)",
+          price: "$67",
+          category: "Education",
+          tag: "Fast Mastery",
+          description: "A concise, premium educational track designed to quickly upgrade your understanding of debt elimination, cash flow, and practical wealth acceleration.",
+          includes: ["7 video modules", "Action worksheets", "Implementation checklist", "Core financial operating principles"],
+          bonuses: ["Reflection journal prompts", "Fast-start capital control guide"],
+          href: "#"
+        },
+        {
+          name: "Full Course (15 modules)",
+          price: "$147",
+          category: "Education",
+          tag: "Flagship",
+          description: "A full-spectrum wealth acceleration curriculum covering debt, cash flow, leverage, recurring revenue logic, and generational wealth architecture.",
+          includes: ["15 premium modules", "Advanced implementation resources", "Financial systems templates", "Strategic decision frameworks"],
+          bonuses: ["Private wealth blueprint", "Risk framing cheat sheet"],
+          href: "#"
+        },
+        {
+          name: "Monthly Insights Reports",
+          price: "$49/mo",
+          category: "Intelligence",
+          tag: "Research",
+          description: "Curated monthly intelligence reports built for members who value sharp signal on markets, cash management, and opportunity framing.",
+          includes: ["Monthly PDF intelligence", "Macro summary", "Opportunity watchlist", "Capital allocation commentary"],
+          bonuses: ["Quarterly strategic memo", "Private briefing archive"],
+          href: "#"
+        },
+        {
+          name: "Vault Membership",
+          price: "$49/mo",
+          category: "Membership",
+          tag: "Members",
+          description: "An ongoing premium membership delivering tools, templates, strategy assets, and exclusive frameworks inside a private financial resource vault.",
+          includes: ["Members-only vault access", "Monthly asset drops", "Private resource archive", "Framework library"],
+          bonuses: ["Exclusive implementation guides", "Members-only notes"],
+          href: "#"
+        },
+        {
+          name: "Podcast Premium",
+          price: "$19/mo",
+          category: "Media",
+          tag: "Audio",
+          description: "Premium audio intelligence for ambitious listeners who prefer strategic wealth thinking, private insights, and higher-quality financial conversations.",
+          includes: ["Premium episodes", "Private audio feed", "Strategic commentary", "Exclusive members-only discussions"],
+          bonuses: ["Episode notes archive", "Monthly key takeaways summary"],
+          href: "#"
+        },
+        {
+          name: "AI Agent Rental (Lead Scorer + Viral Bot)",
+          price: "$99/mo",
+          category: "AI Infrastructure",
+          tag: "Automation",
+          description: "A done-for-you AI leverage layer that helps score inbound opportunities and supports viral content amplification without heavy technical overhead.",
+          includes: ["Lead scoring agent", "Viral growth bot", "Operator setup guide", "Monthly optimization prompts"],
+          bonuses: ["AI workflow templates", "Prompt pack for growth teams"],
+          href: "#"
+        },
+        {
+          name: "Digital Nation Citizenship",
+          price: "$497/year",
+          category: "Identity Layer",
+          tag: "Annual",
+          description: "A premium annual membership concept positioned around access, belonging, and modern sovereign identity for digitally native wealth builders.",
+          includes: ["Annual access credential", "Premium member circle", "Strategic briefings", "Exclusive digital benefits"],
+          bonuses: ["Founding member dossier", "Private annual vision template"],
+          href: "#"
+        }
+      ];
+
+      const productGrid = document.getElementById("productGrid");
+      const modal = document.getElementById("modal");
+      const closeModal = document.getElementById("closeModal");
+      const modalCategory = document.getElementById("modalCategory");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalPrice = document.getElementById("modalPrice");
+      const modalDescription = document.getElementById("modalDescription");
+      const modalIncludes = document.getElementById("modalIncludes");
+      const modalBonuses = document.getElementById("modalBonuses");
+      const modalBuyLink = document.getElementById("modalBuyLink");
+
+      productGrid.innerHTML = products.map((product, index) => `
+        <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">${product.category}</p>
+              <h3 class="mt-4 font-display text-3xl leading-tight">${product.name}</h3>
+            </div>
+            <span class="rounded-full border border-sovereign-gold/20 bg-sovereign-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-sovereign-gold">${product.tag}</span>
+          </div>
+          <p class="mt-6 text-sm leading-7 text-sovereign-muted">${product.description}</p>
+          <div class="mt-8 flex items-end justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-sovereign-muted">Price</p>
+              <p class="mt-2 text-2xl font-semibold text-sovereign-gold">${product.price}</p>
+            </div>
+            <span class="text-sm text-sovereign-muted">#${String(index + 1).padStart(2, "0")}</span>
+          </div>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <button
+              class="open-modal inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10"
+              data-index="${index}"
+            >
+              Quick View
+            </button>
+            <a href="${product.href}" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-5 py-3 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+              Buy Now
+            </a>
+          </div>
+        </article>
+      `).join("");
+
+      function openProductModal(index) {
+        const product = products[index];
+        modalCategory.textContent = product.category;
+        modalTitle.textContent = product.name;
+        modalPrice.textContent = product.price;
+        modalDescription.textContent = product.description;
+        modalBuyLink.href = product.href;
+        modalIncludes.innerHTML = product.includes.map(item => `<li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>${item}</span></li>`).join("");
+        modalBonuses.innerHTML = product.bonuses.map(item => `<li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-red"></span><span>${item}</span></li>`).join("");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+
+        gsap.fromTo(
+          modal.querySelector(".relative.z-10"),
+          { y: 30, opacity: 0, scale: 0.98 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }
+        );
+      }
+
+      function closeProductModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      document.querySelectorAll(".open-modal").forEach((button) => {
+        button.addEventListener("click", () => openProductModal(button.dataset.index));
+      });
+
+      closeModal.addEventListener("click", closeProductModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target.classList.contains("modal-backdrop")) closeProductModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProductModal();
+      });
+
+      gsap.from(".hero-copy > *", {
+        y: 24,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.12,
+        ease: "power3.out"
+      });
+
+      gsap.utils.toArray(".reveal").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 86%"
+          },
+          y: 36,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out"
+        });
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        const dot = document.querySelector(".cursor-dot");
+        const ring = document.querySelector(".cursor-ring");
+        if (!dot || !ring) return;
+        window.mouseX = e.clientX;
+        window.mouseY = e.clientY;
+        dot.style.transform = `translate(${window.mouseX - 4}px, ${window.mouseY - 4}px)`;
+      });
+
+      document.querySelectorAll(".card-tilt").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y / rect.height) - 0.5) * -10;
+          const rotateY = ((x / rect.width) - 0.5) * 12;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        });
+      });
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      const ring = document.querySelector(".cursor-ring");
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateRing() {
+        if (ring) {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          ring.style.transform = `translate(${ringX - 17}px, ${ringY - 17}px)`;
+        }
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+    </script>
+  </body>
+</html>
