@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sovereign Capital — Private Wealth Acceleration</title>
+    <meta
+      name="description"
+      content="Sovereign Capital is a premium private wealth acceleration platform helping ambitious individuals eliminate debt, optimize cash flow, and build generational wealth."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sovereign: {
+                black: "#050505",
+                red: "#C8102E",
+                gold: "#D4AF37",
+                ivory: "#F5F1E8",
+                muted: "#B7AEA3",
+                panel: "#0B0B0D",
+                line: "rgba(212,175,55,0.18)"
+              }
+            },
+            fontFamily: {
+              display: ['"Georgia"', '"Times New Roman"', "serif"],
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              glow: "0 0 30px rgba(200,16,46,0.18)",
+              gold: "0 0 40px rgba(212,175,55,0.12)"
+            },
+            backgroundImage: {
+              grid:
+                "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)"
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        cursor: none;
+      }
+      body {
+        background:
+          radial-gradient(circle at top, rgba(200, 16, 46, 0.16), transparent 25%),
+          radial-gradient(circle at 85% 15%, rgba(212, 175, 55, 0.1), transparent 18%),
+          linear-gradient(180deg, #050505 0%, #080808 100%);
+      }
+      .glass {
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .gold-line {
+        position: relative;
+      }
+      .gold-line::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 72px;
+        height: 1px;
+        background: linear-gradient(90deg, #d4af37, transparent);
+      }
+      .card-tilt {
+        transform-style: preserve-3d;
+        transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card-tilt:hover {
+        border-color: rgba(212, 175, 55, 0.35);
+        box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 0 30px rgba(212,175,55,0.08);
+      }
+      .card-tilt > * {
+        transform: translateZ(18px);
+      }
+      .marquee {
+        animation: marquee 18s linear infinite;
+      }
+      @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      .testimonial-track {
+        animation: slideTrack 24s linear infinite;
+      }
+      @keyframes slideTrack {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        pointer-events: none;
+        border-radius: 999px;
+        z-index: 9999;
+        mix-blend-mode: screen;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #d4af37;
+      }
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(212,175,55,0.45);
+        box-shadow: 0 0 24px rgba(212,175,55,0.12);
+      }
+      .noise::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.04) 0.6px, transparent 0.6px);
+        background-size: 10px 10px;
+        opacity: 0.08;
+        pointer-events: none;
+      }
+      .hero-orb {
+        filter: blur(28px);
+        opacity: 0.65;
+      }
+      @media (max-width: 768px) {
+        * {
+          cursor: auto;
+        }
+        .cursor-dot,
+        .cursor-ring {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-sovereign-ivory font-sans selection:bg-sovereign-red/30 selection:text-white overflow-x-hidden">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <div class="fixed inset-0 bg-grid bg-[size:44px_44px] opacity-[0.04] pointer-events-none"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[50rem] h-[20rem] hero-orb bg-sovereign-red/20 rounded-full pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/75 backdrop-blur-xl">
+      <nav class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-full border border-sovereign-gold/40 bg-white/5 shadow-gold">
+              <span class="font-display text-lg text-sovereign-gold">SC</span>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.45em] text-sovereign-muted">Sovereign</p>
+              <p class="font-display text-xl tracking-wide">Capital</p>
+            </div>
+          </a>
+
+          <div class="hidden md:flex items-center gap-8 text-sm text-sovereign-muted">
+            <a href="products.html" class="hover:text-sovereign-ivory transition">Products</a>
+            <a href="courses.html" class="hover:text-sovereign-ivory transition">Courses</a>
+            <a href="insights.html" class="hover:text-sovereign-ivory transition">Insights</a>
+            <a href="about.html" class="hover:text-sovereign-ivory transition">About</a>
+            <a href="terms.html" class="hover:text-sovereign-ivory transition">Terms</a>
+          </div>
+
+          <a
+            href="products.html"
+            class="rounded-full border border-sovereign-gold/30 bg-white/5 px-5 py-2.5 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/70 hover:bg-sovereign-gold/10"
+          >
+            Enter Platform
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative isolate noise">
+        <div class="mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-8 lg:pb-28 lg:pt-24">
+          <div class="grid items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
+            <div class="hero-copy">
+              <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-sovereign-gold/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-sovereign-gold">
+                Private Wealth Acceleration Platform
+              </div>
+              <h1 class="max-w-4xl font-display text-5xl leading-tight text-sovereign-ivory sm:text-6xl lg:text-7xl">
+                Destroy debt. Engineer liquidity. Compound sovereign wealth.
+              </h1>
+              <p class="mt-8 max-w-2xl text-lg leading-8 text-sovereign-muted">
+                A premium ecosystem of debt elimination systems, AI-powered growth infrastructure,
+                financial intelligence reports, and elite education built for ambitious operators,
+                founders, and high-income households.
+              </p>
+
+              <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                <a
+                  href="products.html"
+                  class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]"
+                >
+                  Explore Products
+                </a>
+                <a
+                  href="courses.html"
+                  class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10"
+                >
+                  View Education Suite
+                </a>
+              </div>
+
+              <div class="mt-12 grid gap-6 sm:grid-cols-3">
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Wealth Created</p>
+                  <p id="wealthCounter" class="mt-3 font-display text-3xl text-sovereign-ivory">₹0</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Members</p>
+                  <p class="mt-3 font-display text-3xl text-sovereign-ivory">4,200+</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Avg. ROI Focus</p>
+                  <p class="mt-3 font-display text-3xl text-sovereign-ivory">Precision</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual relative">
+              <div class="absolute -top-8 right-10 h-32 w-32 rounded-full bg-sovereign-gold/10 blur-3xl"></div>
+              <div class="glass relative overflow-hidden rounded-[2rem] border border-white/10 p-6 shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-br from-sovereign-gold/10 via-transparent to-sovereign-red/10"></div>
+                <div class="relative">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                    <div>
+                      <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Portfolio Engine</p>
+                      <p class="mt-2 font-display text-2xl">Sovereign Console</p>
+                    </div>
+                    <div class="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300">
+                      Live
+                    </div>
+                  </div>
+
+                  <div class="mt-6 space-y-4">
+                    <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <p class="text-sm text-sovereign-muted">Debt Elimination Efficiency</p>
+                          <p class="mt-1 text-2xl font-semibold text-white">91.4%</p>
+                        </div>
+                        <div class="h-16 w-16 rounded-full border border-sovereign-gold/30 bg-sovereign-gold/10"></div>
+                      </div>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                        <p class="text-xs uppercase tracking-[0.25em] text-sovereign-muted">Cashflow Lift</p>
+                        <p class="mt-2 text-xl font-semibold text-sovereign-gold">+₹4.2L / quarter</p>
+                      </div>
+                      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                        <p class="text-xs uppercase tracking-[0.25em] text-sovereign-muted">Execution Layer</p>
+                        <p class="mt-2 text-xl font-semibold text-white">AI + Advisory</p>
+                      </div>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-sovereign-red/[0.08] p-4">
+                      <p class="text-sm text-sovereign-muted">Structured systems to convert income chaos into elegant capital control.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="absolute -bottom-8 -left-8 hidden rounded-3xl border border-sovereign-gold/15 bg-white/5 px-5 py-4 shadow-gold lg:block">
+                <p class="text-xs uppercase tracking-[0.25em] text-sovereign-muted">Curated For</p>
+                <p class="mt-2 text-sm text-sovereign-ivory">Operators · Professionals · Founder Households</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-y border-white/10 bg-black/30 py-5 overflow-hidden">
+        <div class="marquee flex min-w-full gap-16 whitespace-nowrap text-xs uppercase tracking-[0.45em] text-sovereign-muted">
+          <span>Trusted by ambitious households</span>
+          <span>Private systems for wealth acceleration</span>
+          <span>Data-led debt elimination</span>
+          <span>AI-enabled execution infrastructure</span>
+          <span>Curated monthly intelligence</span>
+          <span>Trusted by ambitious households</span>
+          <span>Private systems for wealth acceleration</span>
+          <span>Data-led debt elimination</span>
+          <span>AI-enabled execution infrastructure</span>
+          <span>Curated monthly intelligence</span>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+        <div class="max-w-2xl">
+          <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Core Infrastructure</p>
+          <h2 class="gold-line mt-4 font-display text-4xl text-sovereign-ivory">Interactive tools engineered for financial control.</h2>
+          <p class="mt-8 text-lg leading-8 text-sovereign-muted">
+            Each system is designed to feel tactile, elegant, and decisive—giving members a clearer command center for debt, credit, recurring revenue, and financial opportunity.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 lg:grid-cols-3">
+          <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+            <div class="flex items-center justify-between">
+              <span class="rounded-full border border-sovereign-gold/20 bg-sovereign-gold/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-sovereign-gold">Debt Systems</span>
+              <span class="text-sm text-sovereign-muted">01</span>
+            </div>
+            <h3 class="mt-8 font-display text-3xl">Debt Destroyer Toolkit</h3>
+            <p class="mt-4 text-sovereign-muted leading-7">
+              A ruthless framework for mapping liabilities, prioritizing payoff velocity, and reclaiming monthly cash flow without guesswork.
+            </p>
+            <div class="mt-8 h-px bg-gradient-to-r from-sovereign-gold/40 to-transparent"></div>
+            <p class="mt-6 text-sm uppercase tracking-[0.3em] text-sovereign-muted">Command · Clarity · Control</p>
+          </article>
+
+          <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+            <div class="flex items-center justify-between">
+              <span class="rounded-full border border-sovereign-red/20 bg-sovereign-red/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-sovereign-red">Revenue Stack</span>
+              <span class="text-sm text-sovereign-muted">02</span>
+            </div>
+            <h3 class="mt-8 font-display text-3xl">SaaS Starter Dashboard</h3>
+            <p class="mt-4 text-sovereign-muted leading-7">
+              Subscription-based operating dashboards for cashflow visibility, lead signals, conversion benchmarks, and growth execution.
+            </p>
+            <div class="mt-8 h-px bg-gradient-to-r from-sovereign-red/40 to-transparent"></div>
+            <p class="mt-6 text-sm uppercase tracking-[0.3em] text-sovereign-muted">Recurring Revenue Intelligence</p>
+          </article>
+
+          <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+            <div class="flex items-center justify-between">
+              <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.3em] text-sovereign-ivory">AI Layer</span>
+              <span class="text-sm text-sovereign-muted">03</span>
+            </div>
+            <h3 class="mt-8 font-display text-3xl">AI Agent Rental</h3>
+            <p class="mt-4 text-sovereign-muted leading-7">
+              Deploy lead scoring and viral growth automation without assembling a technical team. Clean leverage. Immediate capability.
+            </p>
+            <div class="mt-8 h-px bg-gradient-to-r from-white/30 to-transparent"></div>
+            <p class="mt-6 text-sm uppercase tracking-[0.3em] text-sovereign-muted">Automation That Feels Bespoke</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="relative border-y border-white/10 bg-white/[0.02]">
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Featured Offers</p>
+              <h2 class="mt-4 font-display text-4xl text-sovereign-ivory">Products, courses, and subscriptions designed to compound value.</h2>
+            </div>
+            <a href="products.html" class="inline-flex w-fit items-center rounded-full border border-sovereign-gold/30 px-5 py-3 text-sm text-sovereign-ivory transition hover:bg-sovereign-gold/10">
+              View full catalog
+            </a>
+          </div>
+
+          <div class="mt-14 grid gap-6 lg:grid-cols-4">
+            <div class="reveal rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">System</p>
+              <h3 class="mt-4 font-display text-2xl">90-Day Credit Card Destroyer</h3>
+              <p class="mt-4 text-sm leading-7 text-sovereign-muted">A step-by-step debt compression protocol built to cut financial drag within one quarter.</p>
+              <p class="mt-6 text-sovereign-gold">$47</p>
+            </div>
+            <div class="reveal rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Membership</p>
+              <h3 class="mt-4 font-display text-2xl">Vault Membership</h3>
+              <p class="mt-4 text-sm leading-7 text-sovereign-muted">Monthly access to premium templates, internal playbooks, and strategic capital frameworks.</p>
+              <p class="mt-6 text-sovereign-gold">$49/mo</p>
+            </div>
+            <div class="reveal rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Education</p>
+              <h3 class="mt-4 font-display text-2xl">Full Course</h3>
+              <p class="mt-4 text-sm leading-7 text-sovereign-muted">Fifteen premium modules on debt elimination, wealth velocity, risk framing, and financial operating systems.</p>
+              <p class="mt-6 text-sovereign-gold">$147</p>
+            </div>
+            <div class="reveal rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Intelligence</p>
+              <h3 class="mt-4 font-display text-2xl">Monthly Insights Reports</h3>
+              <p class="mt-4 text-sm leading-7 text-sovereign-muted">Curated macro, cashflow, and opportunity reports for members who prefer signal over noise.</p>
+              <p class="mt-6 text-sovereign-gold">$49/mo</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Member Results</p>
+            <h2 class="mt-4 font-display text-4xl text-sovereign-ivory">A live carousel of disciplined financial transformation.</h2>
+          </div>
+          <p class="max-w-xl text-sovereign-muted">
+            Premium positioning, credible language, and conversion-focused trust building—crafted to feel private, sophisticated, and high conviction.
+          </p>
+        </div>
+
+        <div class="mt-14 overflow-hidden">
+          <div class="testimonial-track flex w-[200%] gap-6">
+            <div class="flex w-1/2 gap-6">
+              <article class="min-w-[320px] rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-medium text-white">Amara Sen</p>
+                    <p class="text-sm text-sovereign-muted">Consulting Partner, Bengaluru</p>
+                  </div>
+                </div>
+                <p class="mt-6 leading-7 text-sovereign-muted">“The Debt Destroyer framework turned a stressful tangle of balances into a clean execution plan. Within 11 weeks I had structure, liquidity, and confidence again.”</p>
+              </article>
+
+              <article class="min-w-[320px] rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-medium text-white">Daniel Reeves</p>
+                    <p class="text-sm text-sovereign-muted">Agency Owner, Dubai</p>
+                  </div>
+                </div>
+                <p class="mt-6 leading-7 text-sovereign-muted">“Sovereign Capital feels like a private operating system for money. The reports alone have saved me from several sloppy capital allocation decisions.”</p>
+              </article>
+
+              <article class="min-w-[320px] rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-medium text-white">Nadia Laurent</p>
+                    <p class="text-sm text-sovereign-muted">Investor Relations Lead, Geneva</p>
+                  </div>
+                </div>
+                <p class="mt-6 leading-7 text-sovereign-muted">“Elegant, minimal, and serious. Their education products are exceptionally clear and feel designed for high-performers rather than hobbyists.”</p>
+              </article>
+            </div>
+
+            <div class="flex w-1/2 gap-6">
+              <article class="min-w-[320px] rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-medium text-white">Marcus Hale</p>
+                    <p class="text-sm text-sovereign-muted">Tech Executive, Singapore</p>
+                  </div>
+                </div>
+                <p class="mt-6 leading-7 text-sovereign-muted">“The AI Agent Rental offer paid for itself with better lead prioritization in the first month. It feels unfairly efficient.”</p>
+              </article>
+
+              <article class="min-w-[320px] rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-medium text-white">Leila Morgan</p>
+                    <p class="text-sm text-sovereign-muted">Private Practice Founder, London</p>
+                  </div>
+                </div>
+                <p class="mt-6 leading-7 text-sovereign-muted">“Every touchpoint feels premium. I subscribed for the reports and stayed for the clarity around debt strategy and wealth architecture.”</p>
+              </article>
+
+              <article class="min-w-[320px] rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
+                <div class="flex items-center gap-4">
+                  <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=160&q=80" alt="Client portrait" class="h-14 w-14 rounded-full object-cover" />
+                  <div>
+                    <p class="font-medium text-white">Ibrahim Noor</p>
+                    <p class="text-sm text-sovereign-muted">Real Estate Operator, Abu Dhabi</p>
+                  </div>
+                </div>
+                <p class="mt-6 leading-7 text-sovereign-muted">“It’s rare to find a finance brand that feels this polished without sounding inflated. The substance matches the aesthetic.”</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
+        <div class="reveal overflow-hidden rounded-[2rem] border border-sovereign-gold/20 bg-gradient-to-br from-sovereign-red/15 via-black to-sovereign-gold/10 p-8 lg:p-12">
+          <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">By Invitation to Ambition</p>
+              <h2 class="mt-4 max-w-3xl font-display text-4xl text-white lg:text-5xl">
+                Enter a sharper financial operating environment.
+              </h2>
+              <p class="mt-6 max-w-2xl text-lg leading-8 text-sovereign-muted">
+                Explore tools, reports, courses, and subscriptions built for disciplined people who prefer leverage, structure, and elegant wealth creation systems.
+              </p>
+            </div>
+            <div class="flex flex-col gap-4 lg:items-end">
+              <a href="products.html" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white transition hover:scale-[1.02]">
+                Explore Catalog
+              </a>
+              <a href="about.html" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:bg-white/10">
+                Learn About Sovereign
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/40">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-4 lg:px-8">
+        <div class="lg:col-span-2">
+          <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Sovereign Capital</p>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-sovereign-muted">
+            Private wealth acceleration for disciplined operators seeking debt freedom, liquidity optimization, and elegant capital systems.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-white">Navigation</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="products.html" class="hover:text-white">Products</a>
+            <a href="courses.html" class="hover:text-white">Courses</a>
+            <a href="insights.html" class="hover:text-white">Insights</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm text-white">Legal</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="about.html" class="hover:text-white">About</a>
+            <a href="terms.html" class="hover:text-white">Terms & Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const moneyCounter = document.getElementById("wealthCounter");
+      const moneyState = { value: 0 };
+      gsap.to(moneyState, {
+        value: 18.7,
+        duration: 2.4,
+        ease: "power3.out",
+        onUpdate: () => {
+          moneyCounter.textContent = `₹${moneyState.value.toFixed(1)} Cr+`;
+        }
+      });
+
+      gsap.from(".hero-copy > *", {
+        y: 22,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+
+      gsap.utils.toArray(".reveal").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 84%"
+          },
+          y: 36,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+
+      document.querySelectorAll(".card-tilt").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y / rect.height) - 0.5) * -10;
+          const rotateY = ((x / rect.width) - 0.5) * 12;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        });
+      });
+
+      const dot = document.querySelector(".cursor-dot");
+      const ring = document.querySelector(".cursor-ring");
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ring.style.transform = `translate(${ringX - 17}px, ${ringY - 17}px)`;
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+    </script>
+  </body>
+</html>
