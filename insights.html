@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sovereign Capital Insights — Monthly Intelligence Reports</title>
+    <meta
+      name="description"
+      content="Access Sovereign Capital's monthly intelligence reports, sample PDF previews, and subscription options for premium financial insight."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sovereign: {
+                black: "#050505",
+                red: "#C8102E",
+                gold: "#D4AF37",
+                ivory: "#F5F1E8",
+                muted: "#B7AEA3",
+                panel: "#0B0B0D"
+              }
+            },
+            fontFamily: {
+              display: ['"Georgia"', '"Times New Roman"', "serif"],
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              glow: "0 0 30px rgba(200,16,46,0.18)",
+              gold: "0 0 40px rgba(212,175,55,0.12)"
+            },
+            backgroundImage: {
+              grid:
+                "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)"
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+      :root { color-scheme: dark; }
+      * { cursor: none; }
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(200,16,46,0.14), transparent 25%),
+          radial-gradient(circle at 80% 10%, rgba(212,175,55,0.09), transparent 20%),
+          linear-gradient(180deg, #050505 0%, #090909 100%);
+      }
+      .glass {
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .card-tilt {
+        transform-style: preserve-3d;
+        transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card-tilt:hover {
+        border-color: rgba(212,175,55,0.35);
+        box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 0 32px rgba(212,175,55,0.08);
+      }
+      .card-tilt > * { transform: translateZ(18px); }
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        pointer-events: none;
+        border-radius: 999px;
+        z-index: 9999;
+        mix-blend-mode: screen;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #d4af37;
+      }
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(212,175,55,0.45);
+        box-shadow: 0 0 24px rgba(212,175,55,0.12);
+      }
+      .pdf-sheet {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
+          linear-gradient(180deg, #111111 0%, #0B0B0D 100%);
+      }
+      @media (max-width: 768px) {
+        * { cursor: auto; }
+        .cursor-dot, .cursor-ring { display: none; }
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden bg-sovereign-black text-sovereign-ivory font-sans selection:bg-sovereign-red/30 selection:text-white">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="fixed inset-0 bg-grid bg-[size:44px_44px] opacity-[0.04] pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/80 backdrop-blur-xl">
+      <nav class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-full border border-sovereign-gold/40 bg-white/5 shadow-gold">
+              <span class="font-display text-lg text-sovereign-gold">SC</span>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.45em] text-sovereign-muted">Sovereign</p>
+              <p class="font-display text-xl tracking-wide">Capital</p>
+            </div>
+          </a>
+
+          <div class="hidden md:flex items-center gap-8 text-sm text-sovereign-muted">
+            <a href="products.html" class="hover:text-sovereign-ivory transition">Products</a>
+            <a href="courses.html" class="hover:text-sovereign-ivory transition">Courses</a>
+            <a href="insights.html" class="text-sovereign-ivory">Insights</a>
+            <a href="about.html" class="hover:text-sovereign-ivory transition">About</a>
+            <a href="terms.html" class="hover:text-sovereign-ivory transition">Terms</a>
+          </div>
+
+          <a href="#" class="rounded-full border border-sovereign-gold/30 bg-white/5 px-5 py-2.5 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/70 hover:bg-sovereign-gold/10">
+            Subscribe Now
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-8 lg:pb-24 lg:pt-24">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div class="hero-copy">
+            <div class="inline-flex items-center gap-3 rounded-full border border-sovereign-gold/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-sovereign-gold">
+              Monthly Intelligence
+            </div>
+            <h1 class="mt-6 font-display text-5xl leading-tight sm:text-6xl lg:text-7xl">
+              Curated reports for disciplined capital decisions.
+            </h1>
+            <p class="mt-8 max-w-2xl text-lg leading-8 text-sovereign-muted">
+              Sovereign Capital’s monthly reports are built for members who value signal over noise—covering macro framing, cash management, opportunity screens, and elegant capital allocation insights.
+            </p>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a href="#" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+                Start Monthly Subscription
+              </a>
+              <button id="openPdfModal" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10">
+                Preview Sample PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="glass rounded-[2rem] border border-white/10 p-6">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-black/30 p-5">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Subscription</p>
+                <p class="mt-3 font-display text-4xl text-sovereign-gold">$49/mo</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-black/30 p-5">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Archive</p>
+                <p class="mt-3 font-display text-4xl">12+</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-black/30 p-5 sm:col-span-2">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Coverage</p>
+                <p class="mt-3 text-sovereign-muted leading-7">
+                  Macro overview, risk sentiment, cashflow strategy, opportunity watchlists, and private notes for intentional wealth builders.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-6 lg:px-8">
+        <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Report Library</p>
+            <h2 class="mt-4 font-display text-4xl">Sample monthly editions</h2>
+          </div>
+          <p class="max-w-2xl text-sovereign-muted">
+            Preview the look and structure of the private report environment before subscribing.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-3">
+          <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+            <p class="text-xs uppercase tracking-[0.35em] text-sovereign-gold">January Edition</p>
+            <h3 class="mt-4 font-display text-3xl">Macro Reset & Liquidity Discipline</h3>
+            <p class="mt-5 text-sm leading-7 text-sovereign-muted">A premium brief on positioning cash intelligently while maintaining downside sensitivity.</p>
+            <button class="preview-report mt-8 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10" data-title="January Edition">
+              Preview Report
+            </button>
+          </article>
+
+          <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+            <p class="text-xs uppercase tracking-[0.35em] text-sovereign-gold">February Edition</p>
+            <h3 class="mt-4 font-display text-3xl">Opportunity Filters for Volatile Markets</h3>
+            <p class="mt-5 text-sm leading-7 text-sovereign-muted">Decision frameworks for assessing asymmetric opportunities without impulsive capital deployment.</p>
+            <button class="preview-report mt-8 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10" data-title="February Edition">
+              Preview Report
+            </button>
+          </article>
+
+          <article class="card-tilt reveal rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7">
+            <p class="text-xs uppercase tracking-[0.35em] text-sovereign-gold">March Edition</p>
+            <h3 class="mt-4 font-display text-3xl">Capital Allocation for High Earners</h3>
+            <p class="mt-5 text-sm leading-7 text-sovereign-muted">A refined framework for converting strong income into intentional cash reserves and long-term compounding.</p>
+            <button class="preview-report mt-8 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-sovereign-ivory transition hover:border-sovereign-gold/40 hover:bg-white/10" data-title="March Edition">
+              Preview Report
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="reveal rounded-[2rem] border border-sovereign-gold/20 bg-gradient-to-br from-white/[0.04] to-sovereign-red/[0.06] p-8">
+            <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">What Subscribers Receive</p>
+            <ul class="mt-8 space-y-4 text-sovereign-muted leading-8">
+              <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Monthly premium PDF intelligence report</span></li>
+              <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Macro environment summary with curated interpretation</span></li>
+              <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Cash positioning and personal finance control notes</span></li>
+              <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Opportunity watchlists and thematic filters</span></li>
+              <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Access to prior archive issues</span></li>
+            </ul>
+          </div>
+
+          <div class="reveal rounded-[2rem] border border-white/10 bg-white/[0.03] p-8">
+            <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Subscription Options</p>
+            <div class="mt-8 grid gap-6 md:grid-cols-2">
+              <div class="rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Monthly</p>
+                <h3 class="mt-4 font-display text-3xl">$49/mo</h3>
+                <p class="mt-4 text-sm leading-7 text-sovereign-muted">Ideal for members who want steady, ongoing monthly intelligence.</p>
+                <a href="#" class="mt-8 inline-flex rounded-full bg-sovereign-red px-5 py-3 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">Subscribe Monthly</a>
+              </div>
+              <div class="rounded-[1.5rem] border border-sovereign-gold/20 bg-gradient-to-br from-white/[0.04] to-sovereign-gold/[0.05] p-6">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Annual Access</p>
+                <h3 class="mt-4 font-display text-3xl">$497/year</h3>
+                <p class="mt-4 text-sm leading-7 text-sovereign-muted">For serious readers who prefer one decision and uninterrupted access.</p>
+                <a href="#" class="mt-8 inline-flex rounded-full border border-sovereign-gold/30 bg-white/5 px-5 py-3 text-sm font-semibold text-sovereign-ivory transition hover:bg-sovereign-gold/10">Choose Annual</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/40">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-4 lg:px-8">
+        <div class="lg:col-span-2">
+          <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Sovereign Capital</p>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-sovereign-muted">
+            Premium intelligence infrastructure for people who prefer structured thought, calm decision-making, and capital sophistication.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-white">Explore</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <a href="products.html" class="hover:text-white">Products</a>
+            <a href="courses.html" class="hover:text-white">Courses</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm text-white">Company</p>
+          <div class="mt-4 flex flex-col gap-3 text-sm text-sovereign-muted">
+            <a href="about.html" class="hover:text-white">About</a>
+            <a href="terms.html" class="hover:text-white">Terms & Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="pdfModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/75 backdrop-blur-xl"></div>
+      <div class="relative z-10 w-full max-w-4xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B0B0D]">
+        <div class="absolute inset-0 bg-gradient-to-br from-sovereign-gold/10 via-transparent to-sovereign-red/10"></div>
+        <div class="relative p-8 lg:p-10">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.45em] text-sovereign-gold">Sample PDF Preview</p>
+              <h3 id="pdfTitle" class="mt-3 font-display text-4xl text-white">Monthly Intelligence Report</h3>
+            </div>
+            <button id="closePdfModal" class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-sovereign-muted transition hover:text-white">
+              Close
+            </button>
+          </div>
+
+          <div class="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="pdf-sheet rounded-[1.5rem] border border-white/10 p-6">
+              <div class="flex items-center justify-between">
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-gold">SO</p>
+                <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Page 01</p>
+              </div>
+              <div class="mt-8 space-y-4">
+                <div class="h-3 w-2/3 rounded-full bg-white/10"></div>
+                <div class="h-3 w-full rounded-full bg-white/10"></div>
+                <div class="h-3 w-5/6 rounded-full bg-white/10"></div>
+                <div class="mt-8 h-36 rounded-2xl border border-white/10 bg-gradient-to-br from-sovereign-gold/10 to-sovereign-red/10"></div>
+                <div class="space-y-3 pt-4">
+                  <div class="h-2.5 w-full rounded-full bg-white/10"></div>
+                  <div class="h-2.5 w-4/5 rounded-full bg-white/10"></div>
+                  <div class="h-2.5 w-11/12 rounded-full bg-white/10"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6">
+              <p class="text-xs uppercase tracking-[0.35em] text-sovereign-muted">Inside This Report</p>
+              <ul class="mt-6 space-y-4 text-sm leading-7 text-sovereign-ivory">
+                <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Executive summary with capital posture overview</span></li>
+                <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Macro landscape framing with plain-language interpretation</span></li>
+                <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Cash management and liquidity discipline observations</span></li>
+                <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Opportunity screen with strategic filters</span></li>
+                <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-sovereign-gold"></span><span>Private editor notes for disciplined action</span></li>
+              </ul>
+
+              <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                <a href="#" class="inline-flex items-center justify-center rounded-full bg-sovereign-red px-7 py-4 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+                  Subscribe for Full Access
+                </a>
+                <a href="#" class="inline-flex items-center justify-center rounded-full border border-sovereign-gold/30 bg-white/5 px-7 py-4 text-sm font-semibold text-sovereign-ivory transition hover:bg-sovereign-gold/10">
+                  Download Sample
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const pdfModal = document.getElementById("pdfModal");
+      const pdfTitle = document.getElementById("pdfTitle");
+      const closePdfModal = document.getElementById("closePdfModal");
+
+      function openPdf(title = "Monthly Intelligence Report") {
+        pdfTitle.textContent = title;
+        pdfModal.classList.remove("hidden");
+        pdfModal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+
+        gsap.fromTo(
+          pdfModal.querySelector(".relative.z-10"),
+          { y: 30, opacity: 0, scale: 0.98 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }
+        );
+      }
+
+      function closePdf() {
+        pdfModal.classList.add("hidden");
+        pdfModal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      document.getElementById("openPdfModal").addEventListener("click", () => openPdf("Monthly Intelligence Report — Sample PDF"));
+      document.querySelectorAll(".preview-report").forEach((button) => {
+        button.addEventListener("click", () => openPdf(`${button.dataset.title} — Sample PDF`));
+      });
+      closePdfModal.addEventListener("click", closePdf);
+      pdfModal.addEventListener("click", (e) => {
+        if (e.target === pdfModal || e.target === pdfModal.firstElementChild) closePdf();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closePdf();
+      });
+
+      gsap.from(".hero-copy > *", {
+        y: 22,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+
+      gsap.utils.toArray(".reveal").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 86%"
+          },
+          y: 36,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out"
+        });
+      });
+
+      document.querySelectorAll(".card-tilt").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+          const rotateY = ((x / rect.width) - 0.5) * 10;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        });
+      });
+
+      const dot = document.querySelector(".cursor-dot");
+      const ring = document.querySelector(".cursor-ring");
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      });
+
+      function animateRing() {
+        if (ring) {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          ring.style.transform = `translate(${ringX - 17}px, ${ringY - 17}px)`;
+        }
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+    </script>
+  </body>
+</html>
